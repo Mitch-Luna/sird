@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, Query } from "@nestjs/common";
+import { Injectable} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { ProfessionsEntity } from "./professions.entity";

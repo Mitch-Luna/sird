@@ -6,12 +6,8 @@ import {
     Param,
     ParseIntPipe,
     Post,
-    Put,
-    Query,
-    UseGuards,
-
+    Put,} from "@nestjs/common";
     
-} from "@nestjs/common";
 import { ProfessionsService } from "./professions.service";
 import { ProfessionsDto } from "./professions.dto";
 
