@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { GradesDto } from "./grades.dto";
+import { GradesService } from "./grades.service";
 
 
 @Controller('grades')
@@ -25,5 +26,38 @@ export class GradesController{
         message: 'ok',
     };
     return data;
+    }
+
+    @Get('/:id')
+    async getGradesById(@Param('id', ParseIntPipe) id: number){
+        const grades = await this.gradesService.getGradesById(id);
+
+        const data = {
+            data:grades,
+            message: 'all ok',
+        };
+        return data;
+    }
+
+    @Put('/:id')
+    async updateGrades(
+        @Param('id', ParseIntPipe) id: number,
+        @Body() payload: GradesDto,
+    ){
+        const grades= await this.gradesService.updateGrades(id, payload);
+        const data = {
+            data: grades,
+        }
+        return data;
+    }
+
+    @Delete('/:id')
+    async deleteGrades(@Param('id',ParseIntPipe) id:number ) {
+        const grades = await this.gradesService.deleteGrades(id);
+        const data = {
+            data: grades,
+            message: 'grade deleted',
+        };
+        return data;
     }
 }

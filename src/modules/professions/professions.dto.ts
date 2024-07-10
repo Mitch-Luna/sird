@@ -1,9 +1,10 @@
-import { IsNumber, IsString, MaxLength } from "class-validator";
+import { IsNumber, IsOptional, IsString, MaxLength } from "class-validator";
 
 
 export class ProfessionsDto{
     @IsNumber()
-    readonly id?: number;
+    @IsOptional()
+    readonly id: number;
 
     @IsString()
     @MaxLength(100)
